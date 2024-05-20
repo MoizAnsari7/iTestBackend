@@ -1,0 +1,11 @@
+const { Schema, model, Schema } = require("mongoose")
+
+const Schema = new Schema({
+},{
+    timestamps : true,
+    toJSON : { virtuals: true },
+    toObject : { virtuals: true },
+})
+
+const Model = model("",Schema)
+module.exports = Model
