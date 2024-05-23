@@ -12,11 +12,11 @@ const FindExplainationOfRightAnswer = ( req , res )=>{
     
 }
 
-const updateOptionDetails = ( req , res )=>{
+const UpdateOptionDetails = ( req , res )=>{
     
 }
 
-const deleteOption  = ( req , res )=>{
+const DeleteOption  = ( req , res )=>{
     
 }
 
@@ -24,6 +24,6 @@ module.exports = {
     SaveAnswer,
     FindAllOptionByQuestionId,
     FindExplainationOfRightAnswer,
-    updateOptionDetails,
-    deleteOption
+    UpdateOptionDetails,
+    DeleteOption
 }
