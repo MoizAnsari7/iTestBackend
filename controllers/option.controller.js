@@ -1,6 +1,6 @@
 const AnswerOptionsModel = require("../models/option.model")
 
-const SaveAnswer = ( req , res )=>{
+const SaveOption = ( req , res )=>{
 
 }
 
@@ -21,7 +21,7 @@ const DeleteOption  = ( req , res )=>{
 }
 
 module.exports = {
-    SaveAnswer,
+    SaveOption,
     FindAllOptionByQuestionId,
     FindExplainationOfRightAnswer,
     UpdateOptionDetails,
