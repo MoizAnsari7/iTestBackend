@@ -6,8 +6,10 @@ const router = express.Router();
 const UserRoutes = require("./user.routes");
 //assessment routes
 const AssessmentRoutes = require("./assessment.routes");
+//question routes
+const QuestionRoutes = require("./question.routes");
 
 router.use("/user", UserRoutes);
 router.use("/assessment", AssessmentRoutes);
-
+router.use("/question", QuestionRoutes );
 module.exports = router;
