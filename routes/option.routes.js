@@ -7,7 +7,7 @@ const {
     FindExplainationOfRightAnswer,
     UpdateOptionDetails,
     DeleteOption
-} = require("../controllers/answer-option.controller")
+} = require("../controllers/option.controller")
 
 app.post("/save", SaveAnswer);
 app.get("/findOption/:questionId", FindAllOptionByQuestionId );

@@ -1,4 +1,4 @@
-const AnsOptionModel = require("../models/answerOption.model");
+const AnswerOptionsModel = require("../models/option.model")
 
 const SaveAnswer = ( req , res )=>{
 
