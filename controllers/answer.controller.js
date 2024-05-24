@@ -24,23 +24,25 @@ const GetUserAnswerOfQuestionByQuestionId = async ( req, res )=>{
             {
                 return res.status(404).json({ message : "Answer Not Found" })
             }
-            return res.status(404).json({ message : "Answer fetched successfully", data : userAnswer })
+            return res.status(200).json({ message : "Answer fetched successfully", data : userAnswer })
     }catch(e){
         console.log("catch CreateAssessment : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }
 }
 
+//shift there controller to test section
 const  GetUserAnswerOfAllTestQuestion = ( req, res )=>{
     try{
     }catch(e){
-        console.log("catch CreateAssessment : ",e);
+        console.log("catch GetUserAnswerOfAllTestQuestion : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }
 }
 
 const UpdateResponse = ( req, res )=>{
     try{
+
     }catch(e){
         console.log("catch CreateAssessment : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
@@ -48,10 +50,13 @@ const UpdateResponse = ( req, res )=>{
 }
 
 
-const DeleteResponse = ( req, res )=>{
+const DeleteResponse = async ( req, res )=>{
     try{
+        let AnswerId = req.params.questionId;
+        let deletedResponse = await AnswerModel.findByIdAndDelete(answerId);
+        return res.status(200).json({ message : "Answer cleared successfully", data : deletedResponse })
     }catch(e){
-        console.log("catch CreateAssessment : ",e);
+        console.log("catch DeleteResponse : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }
 }

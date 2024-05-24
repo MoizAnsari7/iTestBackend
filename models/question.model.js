@@ -14,5 +14,13 @@ const QuestionSchema = new Schema({
     toObject : { virtuals: true },
 })
 
+// Add this virtual field in the Question schema
+QuestionSchema.virtual('answerOptions', {
+    ref: 'answerOptions',
+    localField: '_id',
+    foreignField: 'questionId',
+    justOne: false // Ensure it returns an array
+  });
+
 const QuestionModel = model("questions",QuestionSchema)
 module.exports = QuestionModel

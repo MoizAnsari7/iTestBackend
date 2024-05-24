@@ -4,15 +4,15 @@ const router = express.Router()
 const {
     SaveOption,
     FindAllOptionByQuestionId,
-    FindExplainationOfRightAnswer,
     UpdateOptionDetails,
-    DeleteOption
-} = require("../controllers/option.controller")
+    DeleteOption,
+    FindDetailOfOption
+} = require("../controllers/options.controller")
 
-app.post("/save", SaveOption);
-app.get("/findOption/:questionId", FindAllOptionByQuestionId );
-app.get("/optionDetail/:optionId", FindExplainationOfRightAnswer);
+router.post("/save", SaveOption);
+router.get("/findOption/:questionId", FindAllOptionByQuestionId );
+router.get("/optionDetail/:optionId", FindDetailOfOption);
 //update multiple at once
-app.put("/update", UpdateOptionDetails);
-app.delete("/:optionId", DeleteOption)
+router.put("/update", UpdateOptionDetails);
+router.delete("/:optionId", DeleteOption)
 module.exports = router
