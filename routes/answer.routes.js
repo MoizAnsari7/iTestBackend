@@ -6,7 +6,7 @@ const { SubmitAnswer, GetUserAnswerOfQuestionByQuestionId, GetUserAnswerOfAllTes
 router.post("/save", SubmitAnswer);
 
 //
-router.get("/answer/:questionId/:userId", GetUserAnswerOfQuestionByQuestionId);
+router.get("/:questionId/:userId", GetUserAnswerOfQuestionByQuestionId);
 
 //find whole test as test copy filled by the user.
 router.get("/testAnswer/:testId", GetUserAnswerOfAllTestQuestion);
