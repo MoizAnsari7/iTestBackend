@@ -18,8 +18,8 @@ const SubmitAnswer = async ( req, res )=>{
 
 const GetUserAnswerOfQuestionByQuestionId = async ( req, res )=>{
     try{
-        let { userId, questionId } = request.params;
-        let userAnswer = await AnswerModel.find({ userId, questionId  }).pupulate()
+        let { userId, questionId } = req.params;
+        let userAnswer = await AnswerModel.find({ userId, questionId  }).populate()
         if(!userAnswer)
             {
                 return res.status(404).json({ message : "Answer Not Found" })
