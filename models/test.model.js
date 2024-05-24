@@ -4,7 +4,7 @@ const TestSchema = new Schema({
     testName : String,
     description : String,
     createdBy : { type : Schema.Types.ObjectId, ref : "users" },
-    timeLimit : Number, //time in minutes
+    TimeLimit : Number, //time in minutes
 },{
     timestamps : true,
     toJSON : { virtuals: true },

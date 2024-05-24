@@ -37,12 +37,12 @@ const CreateAssessment = async (req, res)=>{
 
 const AssessmentsList = async ( req, res )=>{
     const assessmentList = await assessmentModel.find();
-    return res.status(200).json({ data : assessmentList })
+    return res.status(200).json({ message : "Assessment list fetched successfully", total : assessmentList.length , data : assessmentList })
 }
 
 const AssessmentsDetails = async ( req, res )=>{
     const assessmentDetails = await assessmentModel.findById(req.params.id);
-    return res.status(200).json({ data : assessmentDetails })
+    return res.status(200).json({ message : "Assessment details fetched successfully", data : assessmentDetails })
 }
 
 const UpdateAssessmentsDetails = (req, res)=>{

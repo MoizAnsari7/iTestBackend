@@ -1,23 +1,45 @@
-const CreateTest = (req, res )=>{
+const TestModel = require("../models/test.model");
+
+const CreateTest = async (req, res )=>{
     try{
+        const { testName, description, createdBy, timeLimit} = req.body;
+    
+        let testData = new TestModel({ testName, description, createdBy, timeLimit})
+    
+        //save question
+        let testDetails = await testData.save();
+        return res.status(201).json({ msg : "Test saved successfully", data : testDetails })
     }catch(e){
-        console.log("catch CreateAssessment : ",e);
+        console.log("catch CreateTest : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }
 }
 
-const TestList = (req, res )=>{
+const TestList = async (req, res )=>{
     try{
+        const testList = await TestModel.find();
+        if(testList.length == 0)
+            {
+                return res.status(404).json({ message : "No test found", data : [] }) 
+            }
+    return res.status(200).json({ message : "Test list fatched successfully",count : testList.length, data : testList })
+
     }catch(e){
-        console.log("catch CreateAssessment : ",e);
+        console.log("catch TestList : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }    
 }
 
-const TestDetails = (req, res )=>{
+const TestDetails = async (req, res )=>{
     try{
+        const testDetails = await TestModel.find();
+        if(!testDetails)
+            {
+                return res.status(404).json({ message : "No test found", data : [] }) 
+            }
+    return res.status(200).json({ message : "Test details fatched successfully", data : testDetails })
     }catch(e){
-        console.log("catch CreateAssessment : ",e);
+        console.log("catch TestDetails : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }
 }
@@ -30,10 +52,13 @@ const UpdateTestDetails = (req, res )=>{
     }
 }
 
-const DeleteTest = (req, res )=>{
+const DeleteTest = async (req, res )=>{
     try{
+        let testId = req.params.testId;
+        let deletedResponse = await AnswerModel.findByIdAndDelete(testId);
+        return res.status(200).json({ message : "Test deleted successfully", data : deletedResponse })
     }catch(e){
-        console.log("catch CreateAssessment : ",e);
+        console.log("catch DeleteTest : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
     }
 }

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router()
-const { CreateTest, TestList, TestDetails, UpdateTestDetails, DeleteTest } = require("../controllers/assessment.controller");
+const { CreateTest, TestList, TestDetails, UpdateTestDetails, DeleteTest } = require("../controllers/test.controller");
 
 //create new Test
 router.post("/create", CreateTest);
