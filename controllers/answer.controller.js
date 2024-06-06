@@ -2,9 +2,9 @@ const AnswerModel = require("../models/answer.model");
 
 const SubmitAnswer = async ( req, res )=>{
     try{
-        const { userId, questionId, selectedOptionId, responseTime } = req.body;
+        const { userId, questionId, selectedOptionId, responseTime, correct } = req.body;
     
-        let userAnswer = new AnswerModel({ userId, questionId, selectedOptionId, responseTime })
+        let userAnswer = new AnswerModel({ userId, questionId, selectedOptionId, responseTime, correct })
     
         //save assessment
         let userAnswerDetails = await userAnswer.save();

@@ -1,13 +1,21 @@
 const TestModel = require("../models/test.model");
+const AssessmentModel = require("../models/assessment.model")
+
 
 const CreateTest = async (req, res )=>{
     try{
-        const { testName, description, createdBy, timeLimit} = req.body;
+        const { testName, description, createdBy, timeLimit, assessmentId} = req.body;
     
         let testData = new TestModel({ testName, description, createdBy, timeLimit})
     
         //save question
         let testDetails = await testData.save();
+        console.log(testDetails._id);
+        if(assessmentId)
+            {
+               const updatedAssessment = await AssessmentModel.findByIdAndUpdate( assessmentId, { $push : { test : [ testDetails._id ] }  }, { new : true} )
+               console.log("ab ",updatedAssessment);
+            }
         return res.status(201).json({ msg : "Test saved successfully", data : testDetails })
     }catch(e){
         console.log("catch CreateTest : ",e);

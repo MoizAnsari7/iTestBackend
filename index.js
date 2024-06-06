@@ -19,13 +19,13 @@ _app.use("/v1",require("./routes"));
 
 
 //port to run backend server
-const port = 3000
+const port = 5000
 _app.listen(port, (err)=>{
     if(err)
         {
             console.log("server stopped",error);
         }else{
-            console.log("Server is running on Port : ", 3000);
+            console.log("Server is running on Port : ", 5000);
         }
 })
                
