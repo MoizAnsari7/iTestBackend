@@ -21,7 +21,8 @@ const CreateAssessment = async (req, res)=>{
         name,
         description,
         timeLimit,
-        createdBy
+        createdBy,
+        test : []
     })
 
     //save assessment

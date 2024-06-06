@@ -4,7 +4,8 @@ const AnswerSchema = new Schema({
     userId : { type : Schema.Types.ObjectId, ref : "" },
     questionId : { type : Schema.Types.ObjectId, ref : "" },
     selectedOptionId : { type : Schema.Types.ObjectId, ref : "" },
-    responseTime : { type : String }//will be converted to time stamps
+    responseTime : { type : String },//will be converted to time stamps
+    correct : { type:Boolean , required :true , default : false}
 },{
     timestamps : true,
     toJSON : { virtuals: true },

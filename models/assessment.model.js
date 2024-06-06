@@ -5,9 +5,9 @@ const assessmentSchema = new Schema({
     description : String,
     timeLimit : { type: Number, required: true },//in minutes
     createdBy : { type: Schema.Types.ObjectId, ref: 'users' },
-    // tests : [{
-    //     type : Schema.Types.ObjectId , ref: 'tests'
-    // }]
+    test : [{
+        type : Schema.Types.ObjectId , ref: 'tests'
+    }]
 },{
     timestamps : true,
     toJSON : { virtuals: true },
