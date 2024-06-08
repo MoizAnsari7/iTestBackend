@@ -77,15 +77,16 @@ const DeleteAssessment = async (req, res)=>{
 
 const TestListByAssessmentId = async (req, res )=>{
     try{
-        console.log("TestListByAssessmentId", req.param.assessmentId);
-        const testList = await assessmentModel.findById( req.param.assessmentId ).populate();
-        // if(testList.length == 0)
-        //     {
-        //         return res.status(404).json({ message : "No test found", data : [] }) 
-        //     }
-        console.log("response",testList);
-    return res.status(200).json({ message : "Test list fatched successfully",count : testList.length, data : testList })
-
+        console.log("TestListByAssessmentId", req.params.assessmentId);
+        const testList = await assessmentModel.findById( req.params.assessmentId ).populate();
+        console.log("response",testList.test);
+        if(testList && testList.test.length == 0)
+            {
+                return res.status(404).json({ message : "No test found assossiated with assessment", data : [] }) 
+            }else{
+        
+    return res.status(200).json({ message : "Test list fatched successfully",count : testList.test.length, data : testList.test })
+            }
     }catch(e){
         console.log("catch TestList : ",e);
         return res.status(500).json({ message : "Internal server error", error : e })
