@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router()
-const { CreateAssessment, AssessmentsList, AssessmentsDetails, UpdateAssessmentsDetails, DeleteAssessment } = require("../controllers/assessment.controller");
+const { CreateAssessment, TestListByAssessmentId, AssessmentsList, AssessmentsDetails, UpdateAssessmentsDetails, DeleteAssessment } = require("../controllers/assessment.controller");
 
 //create new assessment
 router.post("/create", CreateAssessment);
 
 //list of assessment
 router.get("/list", AssessmentsList);
+
+
+//list of test with assessement id
+router.get("/testList/:assessmentId", TestListByAssessmentId);
 
 //assessment details
 router.get("/:id", AssessmentsDetails);
