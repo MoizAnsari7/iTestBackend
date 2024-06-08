@@ -78,7 +78,9 @@ const DeleteAssessment = async (req, res)=>{
 const TestListByAssessmentId = async (req, res )=>{
     try{
         console.log("TestListByAssessmentId", req.params.assessmentId);
-        const testList = await assessmentModel.findById( req.params.assessmentId ).populate();
+        const testList = await assessmentModel.findOne({ _id: req.params.assessmentId })
+        .populate({ path: 'test' })  // specify the path correctly
+        .exec();
         console.log("response",testList.test);
         if(testList && testList.test.length == 0)
             {
