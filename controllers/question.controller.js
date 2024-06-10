@@ -63,7 +63,15 @@ const findQuestionWithOptions = async (req, res)=>{
         path: 'answerOptions',
         model: 'AnswerOption'
       });
-      res.status(200).json({ message : "success", data : questionsWithOption});
+
+      console.log("response",questionsWithOption);
+        if( questionsWithOption.length == 0)
+            {
+                return res.status(404).json({ message : "No question found assossiated with test", data : [] }) 
+            }else{
+        
+    return res.status(200).json({ message : "question list fatched successfully",count : questionsWithOption.length, data : questionsWithOption })
+            }
     
 }
 
