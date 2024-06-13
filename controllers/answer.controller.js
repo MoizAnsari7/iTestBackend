@@ -1,5 +1,8 @@
 const AnswerModel = require("../models/answer.model");
 
+
+
+
 const SubmitAnswer = async ( req, res )=>{
     try{
         const { userId, questionId, selectedOptionId, responseTime, correct } = req.body;
