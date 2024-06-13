@@ -5,9 +5,28 @@ const SubmitAnswer = async ( req, res )=>{
         const { userId, questionId, selectedOptionId, responseTime, correct } = req.body;
     
         let userAnswer = new AnswerModel({ userId, questionId, selectedOptionId, responseTime, correct })
-    
+        
+        let filter = {
+            userId, questionId
+        }
+        let updatedBody = { $set :{
+            selectedOptionId, correct, responseTime, 
+        }}
+
+        let option = { upsert : true }
+
+        const result = await collection.updateOne(filter, updatedBody, option);
+
+        if (result.upsertedCount > 0) {
+            console.log(`Inserted a first answer for question with _id: ${result.upsertedId._id}`);
+          } else if (result.modifiedCount > 0) {
+            console.log('Updated the existing answer.');
+          } else {
+            console.log('No document was modified or inserted.');
+          }
+
         //save assessment
-        let userAnswerDetails = await userAnswer.save();
+        // let userAnswerDetails = await userAnswer.save();
         return res.status(201).json({ msg : "user response saved successfully", data : userAnswerDetails })
     
     }catch(e){
