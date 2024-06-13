@@ -15,7 +15,7 @@ const SubmitAnswer = async ( req, res )=>{
 
         let option = { upsert : true }
 
-        const result = await collection.updateOne(filter, updatedBody, option);
+        const result = await AnswerModel.updateOne(filter, updatedBody, option);
 
         if (result.upsertedCount > 0) {
             console.log(`Inserted a first answer for question with _id: ${result.upsertedId._id}`);
