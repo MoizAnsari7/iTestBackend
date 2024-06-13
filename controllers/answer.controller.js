@@ -19,15 +19,21 @@ const SubmitAnswer = async ( req, res )=>{
 
         if (result.upsertedCount > 0) {
             console.log(`Inserted a first answer for question with _id: ${result.upsertedId._id}`);
+            return res.status(201).json({ msg : "user response saved successfully", data : result })
+
           } else if (result.modifiedCount > 0) {
             console.log('Updated the existing answer.');
+            return res.status(201).json({ msg : "user response saved successfully", data : result })
+
           } else {
             console.log('No document was modified or inserted.');
+            return res.status(200).json({ msg : "user response not saved", data : result })
+
           }
 
         //save assessment
         // let userAnswerDetails = await userAnswer.save();
-        return res.status(201).json({ msg : "user response saved successfully", data : userAnswerDetails })
+        // return res.status(201).json({ msg : "user response saved successfully", data : userAnswerDetails })
     
     }catch(e){
         console.log("catch SubmitAnswer : ",e);
